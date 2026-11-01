@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#203B30">
+  <title>DOG HARMONIE — Espace professionnel</title>
+  <style>
+    :root {
+      --forest: #203B30;
+      --green: #2D4A3D;
+      --cream: #F6F1E8;
+      --terracotta: #A66F5E;
+      --ink: #24352D;
+      --muted: #6D776F;
+      --line: rgba(32, 59, 48, .13);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 8%, rgba(166,111,94,.10), transparent 27rem),
+        linear-gradient(145deg, #f8f5ee 0%, var(--cream) 55%, #eee8dc 100%);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 28px 18px;
+    }
+    .shell { width: min(100%, 900px); }
+    .panel {
+      position: relative;
+      overflow: hidden;
+      background: var(--forest);
+      border-radius: 30px;
+      padding: clamp(28px, 6vw, 58px);
+      box-shadow: 0 24px 70px rgba(32, 59, 48, .18);
+    }
+    .panel::before, .panel::after {
+      content: "";
+      position: absolute;
+      border: 1px solid rgba(246,241,232,.10);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .panel::before { width: 360px; height: 360px; right: -170px; top: -210px; }
+    .panel::after { width: 260px; height: 260px; left: -170px; bottom: -190px; }
+    header { position: relative; text-align: center; color: var(--cream); margin-bottom: 38px; }
+    .mark {
+      width: 54px; height: 54px; margin: 0 auto 17px;
+      border: 1px solid rgba(246,241,232,.55);
+      border-radius: 18px; display: grid; place-items: center;
+      color: var(--cream); font-size: 25px;
+    }
+    .brand { margin: 0; letter-spacing: .16em; font-size: clamp(25px, 5vw, 37px); font-weight: 650; }
+    .eyebrow { margin: 10px 0 0; color: #D6DED6; font-size: 11px; letter-spacing: .22em; font-weight: 650; }
+    .welcome { margin: 24px 0 0; color: #F6F1E8; font-size: clamp(15px, 2.5vw, 18px); font-weight: 400; }
+    .intro { color: #C8D2CA; font-size: 14px; margin: 9px 0 0; }
+    .choices { position: relative; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+    .choice {
+      min-height: 205px; display: flex; flex-direction: column; align-items: flex-start;
+      text-decoration: none; color: var(--ink); background: var(--cream);
+      border: 1px solid rgba(246,241,232,.65); border-radius: 22px;
+      padding: 25px; transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+      box-shadow: 0 8px 22px rgba(0,0,0,.08);
+    }
+    .choice:hover, .choice:focus-visible {
+      transform: translateY(-4px); box-shadow: 0 15px 30px rgba(0,0,0,.16);
+      border-color: var(--terracotta); outline: none;
+    }
+    .icon {
+      width: 54px; height: 54px; border-radius: 17px; display: grid; place-items: center;
+      background: #DFE7DE; color: var(--forest); margin-bottom: 23px;
+    }
+    .choice:nth-child(2) .icon { background: #EADDD4; color: #875B4C; }
+    .icon svg { width: 27px; height: 27px; }
+    .number { color: var(--terracotta); font-size: 10px; letter-spacing: .16em; font-weight: 750; }
+    .choice h2 { font-size: 20px; line-height: 1.2; margin: 7px 0 8px; font-weight: 650; }
+    .choice p { color: var(--muted); font-size: 13px; line-height: 1.5; margin: 0; }
+    .go { margin-top: auto; padding-top: 19px; color: var(--green); font-size: 12px; font-weight: 700; letter-spacing: .04em; display: flex; align-items: center; gap: 8px; }
+    .go span { font-size: 18px; transition: transform .2s ease; }
+    .choice:hover .go span { transform: translateX(4px); }
+    footer { position: relative; text-align: center; color: #C8D2CA; font-size: 10px; letter-spacing: .14em; margin-top: 31px; }
+    @media (max-width: 620px) {
+      body { padding: 14px; align-items: flex-start; }
+      .panel { border-radius: 24px; padding: 32px 20px 25px; margin: 10px 0; }
+      header { margin-bottom: 27px; }
+      .choices { grid-template-columns: 1fr; gap: 13px; }
+      .choice { min-height: 174px; padding: 21px; }
+      .icon { margin-bottom: 17px; }
+      footer { line-height: 1.7; margin-top: 25px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; scroll-behavior: auto !important; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="panel" aria-labelledby="brand">
+      <header>
+        <div class="mark" aria-hidden="true">✦</div>
+        <h1 class="brand" id="brand">DOG HARMONIE</h1>
+        <p class="eyebrow">ÉDUCATION &amp; COMPORTEMENT CANIN</p>
+        <p class="welcome">Bienvenue dans votre espace professionnel</p>
+        <p class="intro">Choisissez l’outil que vous souhaitez ouvrir.</p>
+      </header>
+
+      <nav class="choices" aria-label="Accès aux outils professionnels">
+        <!-- Placez la fiche bilan dans le même dossier et nommez-la fiche-bilan-seance.html -->
+        <a class="choice" href="fiche-bilan-seance.html">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 4h8a2 2 0 0 1 2 2v14H6V6a2 2 0 0 1 2-2Z"/>
+              <path d="M9 4.5V3h6v1.5M9 10h6M9 14h6M9 18h3"/>
+            </svg>
+          </div>
+          <span class="number">ESPACE 01</span>
+          <h2>Fiche bilan de séance</h2>
+          <p>Rédiger, consulter et retrouver le bilan de vos séances d’éducation canine.</p>
+          <span class="go">Accéder à la fiche <span aria-hidden="true">→</span></span>
+        </a>
+
+        <!-- Placez la fiche suivi client dans le même dossier et nommez-la fiche-suivi-client.html -->
+        <a class="choice" href="fiche-suivi-client.html">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="9" cy="8" r="3.2"/>
+              <path d="M3.5 19a5.5 5.5 0 0 1 11 0M16 5.5a3 3 0 0 1 0 5.8M17 14a4.5 4.5 0 0 1 3.5 4.4"/>
+            </svg>
+          </div>
+          <span class="number">ESPACE 02</span>
+          <h2>Fiche suivi client</h2>
+          <p>Accéder aux informations du chien, du maître et au suivi de l’accompagnement.</p>
+          <span class="go">Accéder à la fiche <span aria-hidden="true">→</span></span>
+        </a>
+      </nav>
+
+      <footer>DOG HARMONIE &nbsp;·&nbsp; ESPACE PROFESSIONNEL</footer>
+    </section>
+  </main>
+</body>
+</html>
